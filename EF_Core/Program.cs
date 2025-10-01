@@ -69,6 +69,17 @@ namespace EF_Core
             //    context.SaveChanges();
             //    Console.WriteLine("Employee with id = 2 deleted");
             //}
+
+            // Query employees with salary > 50000
+            using (var context = new AppDbContext())
+            {
+                var highSalaryEmps = context.Employee.Where(e => e.salary > 50000).ToList();
+                foreach (var emp in highSalaryEmps)
+                {
+                    Console.WriteLine(emp);
+                    Console.WriteLine("--------------------------------------------------");
+                }
+            }
         }
-    } 
+    }
 }
